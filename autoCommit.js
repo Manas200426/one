@@ -24,9 +24,14 @@ function commitChanges() {
 
 // Push changes to remote
 function pushChanges() {
-    execSync('git push');
-    console.log('Changes pushed to remote repository.');
+    try {
+        const pushOutput = execSync('git push origin master', { encoding: 'utf8' });
+        console.log('Git Push Output:', pushOutput);
+    } catch (error) {
+        console.error('Error during push:', error.message);
+    }
 }
+
 
 // Main function
 function main() {
